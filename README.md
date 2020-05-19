@@ -1,6 +1,9 @@
 # ProjectStarter
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.6.
+## Setup on Local Machine
+
+Clone the project and run the command npm install in the project directory
 
 ## Development server
 
