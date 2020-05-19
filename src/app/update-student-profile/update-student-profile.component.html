@@ -1,0 +1,84 @@
+<div class="container mt-2">  
+     <svg (click)="common.goBack()" class="bi bi-arrow-left-short" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+    <path fill-rule="evenodd" d="M7.854 4.646a.5.5 0 010 .708L5.207 8l2.647 2.646a.5.5 0 01-.708.708l-3-3a.5.5 0 010-.708l3-3a.5.5 0 01.708 0z" clip-rule="evenodd"/>
+    <path fill-rule="evenodd" d="M4.5 8a.5.5 0 01.5-.5h6.5a.5.5 0 010 1H5a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>
+    </svg>  
+<!--   <div class="p-2">
+      <div class="text-center">
+        <img class="image-circle" height="100" width="100" src="../../../assets/user.png" alt=""> <br>         
+        <form  *ngIf="profileInfo" (ngSubmit)="update(editFrom)" #editFrom="ngForm" class="form-signin">
+          <div class="form-label-group py-1">
+            <input style="font-size:12px !important;" type="email" name="email" [(ngModel)]="profileInfo.email"  class="form-control" placeholder="Email address" required autofocus>              
+          </div> 
+          <div class="form-label-group py-1">
+              <input style="font-size:12px !important;" type="name" name="name" [(ngModel)]="profileInfo.name"  class="form-control" placeholder="Name" required autofocus>              
+          </div> 
+          <div class="form-label-group py-2">
+            <input style="font-size:12px !important;" type="number" name="number" [(ngModel)]="profileInfo.number"  class="form-control" placeholder="Contact number" required autofocus>              
+          </div> 
+          <div class="form-label-group py-2">
+            <input style="font-size:12px !important;" type="age" name="age" [(ngModel)]="profileInfo.age"  class="form-control" placeholder="Age" required autofocus>              
+          </div> 
+          <div class=" text-center">
+            <button style="font-size:12px !important;" class="btn btn-sm btn-success" type="submit">Save</button>            
+          </div>                      
+        </form>
+        <button routerLink="/coordinator/map-educator/{{uid}}" style="font-size:12px !important;" class="btn btn-sm btn-success">Add Educator</button>  
+      </div>
+    </div>   -->  
+</div>       
+<br>
+<div class="card">
+  <div class="card-header">Profile Information</div>
+  <div class="card-body">
+    <div class="p-2">
+      <div class="text-center">
+        <img class="image-circle" height="100" width="100" src="../../../assets/user.png" alt=""> <br>         
+        <form  *ngIf="profileInfo" (ngSubmit)="update(editFrom)" #editFrom="ngForm" class="form-signin">
+          <div class="form-label-group py-1">
+            <input disabled style="font-size:12px !important;" type="email" name="email" [(ngModel)]="profileInfo.email"  class="form-control" placeholder="Email address" required autofocus>              
+          </div> 
+          <div class="form-label-group py-1">
+              <input style="font-size:12px !important;" type="name" name="name" [(ngModel)]="profileInfo.name"  class="form-control" placeholder="Name" required autofocus>              
+          </div> 
+          <div class="form-label-group py-2">
+            <input style="font-size:12px !important;" type="number" name="number" [(ngModel)]="profileInfo.number"  class="form-control" placeholder="Contact number" required autofocus>              
+          </div> 
+          <div class="form-label-group py-2">
+            <input style="font-size:12px !important;" type="age" name="age" [(ngModel)]="profileInfo.age"  class="form-control" placeholder="Age" required autofocus>              
+          </div> 
+          <div class=" text-center">
+            <button style="font-size:12px !important;" class="btn btn-success" type="submit">Update</button>            
+          </div>                      
+        </form>
+      </div>
+    </div> 
+  </div>
+</div>
+<br><br>
+<div *ngIf="auth.getRole()=='coordinator'" class="card">
+  <div class="card-header">Educator Information
+    <button routerLink="/coordinator/map-educator/{{uid}}" style="font-size:12px !important;float: right;" class="btn btn-sm btn-success">Assign New Educator</button> 
+  </div>
+  <div class="card-body">
+    <div [ngClass]="{'archive': educator.archive==true}" *ngFor="let educator of assignedEducators" class="card m-1 shadow">
+      <div class="card-body p-1" style="padding:0">
+          <div class="d-flex flex-row bd-highlight text-center borderless">
+              <div  style="font-size: 15px !important;" class="p-1 flex-grow-1 bd-highlight">      
+                  {{educator.educatorData.name}}
+              </div>
+              <div class="p-1 flex-grow-1 bd-highlight">               
+                    <svg class="bi bi-person-fill float-right" routerLink="/coordinator/update-educator/{{educator.eid}}" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/>
+                    </svg>     
+               </div> 
+                       
+            </div>       
+      </div>
+  </div>
+  </div>
+</div>
+
+
+
+<br><br><br>

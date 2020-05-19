@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">childcare</string>
+    <string name="title_activity_main">childcare</string>
+    <string name="package_name">com.childcare.app</string>
+    <string name="custom_url_scheme">com.childcare.app</string>
+</resources>

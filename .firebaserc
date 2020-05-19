@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "observationportal": {
+      "hosting": {
+        "project-starter": [
+          "observationportal"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "observationportal"
+  }
+}

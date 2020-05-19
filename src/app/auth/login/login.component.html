@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="row">
+      <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div class="card card-signin my-5">
+          <div class="card-body text-center">
+            <img class="image-circle" height="100" width="100" src="../../../assets/user.png" alt="">
+            <h6 class="card-title text-center">Log in to Child Care Platform</h6>
+            <form (ngSubmit)="login(signin)" #signin="ngForm"  class="form-signin">
+              <div class="form-label-group py-2">
+                <input type="email" name="email" ngModel class="form-control" placeholder="Email address" required autofocus>              
+              </div> 
+
+
+              <div class="form-label-group py-2">
+                <input type="password" name="password" ngModel class="form-control" placeholder="Password" required>
+               
+              </div>
+              <div class=" text-center">
+                <button class="btn btn-sm btn-primary text-uppercase" type="submit">Sign in</button>              
+              </div> <br>
+              <p  style="font-size: xx-small;">Forget Password ? <a routerLink="/auth/forget-password"> Click here</a> </p>             
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+

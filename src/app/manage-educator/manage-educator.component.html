@@ -1,0 +1,87 @@
+<div class="container p-3 mb-5"> 
+        <div style="background-color:rgb(9, 64, 68);color:white !important;" class=" card d-flex flex-row bd-highlight borderless">
+        <div class="p-2 flex-grow-1 bd-highlight">      
+          <h5>Educators List</h5>
+        </div>
+        <div class="p-2 flex-grow-1 bd-highlight">            
+          <button (click)="openVerticallyCentered(content) "   type="button" class="btn btn-default btn-circle float-right" >  
+            <svg class="bi bi-plus-circle-fill" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M16 8A8 8 0 110 8a8 8 0 0116 0zM8.5 4a.5.5 0 00-1 0v3.5H4a.5.5 0 000 1h3.5V12a.5.5 0 001 0V8.5H12a.5.5 0 000-1H8.5V4z" clip-rule="evenodd"/>
+            </svg>  
+          </button>               
+        </div>              
+      </div>  <hr>
+
+      <p class="text-center text-muted"> Red Cards are archived profiles </p>
+      
+      <div [ngClass]="{'archive': educator.archive==true}" *ngFor="let educator of educators" class="card m-1 shadow">
+        <div class="card-body p-1" style="padding:0">
+            <div class="d-flex flex-row bd-highlight borderless">
+                <div  style="font-size: 15px !important;" class="p-1 flex-grow-1 bd-highlight">      
+                    {{educator.name}}
+                </div>
+                <div class="p-1 flex-grow-1 bd-highlight">  
+                  <button (click)="toggleArchive(educator.id,educator.archive)"  type="button" class="btn btn-default btn-circle  mx-1 float-right">  
+                    <svg class="bi bi-archive-fill" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" d="M12.643 15C13.979 15 15 13.845 15 12.5V5H1v7.5C1 13.845 2.021 15 3.357 15h9.286zM6 7a.5.5 0 000 1h4a.5.5 0 000-1H6zM.8 1a.8.8 0 00-.8.8V3a.8.8 0 00.8.8h14.4A.8.8 0 0016 3V1.8a.8.8 0 00-.8-.8H.8z" clip-rule="evenodd"/>
+                    </svg>    
+                  </button>         
+                  <button routerLink="/coordinator/update-educator/{{educator.id}}" type="button" class="btn btn-default btn-circle  mx-1 float-right">  
+                    <svg class="bi bi-person-fill"  width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                      <path fill-rule="evenodd" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/>
+                    </svg>        
+                  </button>
+                                        
+                 </div>                          
+              </div>       
+        </div>
+    </div>
+      
+</div>
+
+
+
+  <ng-template #content let-modal>
+    <div style="padding:0 !important;" class="modal-header"> 
+        <div  class="ml-auto">
+            <svg (click)="modal.dismiss('Cross click')" class="bi bi-x" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M11.854 4.146a.5.5 0 010 .708l-7 7a.5.5 0 01-.708-.708l7-7a.5.5 0 01.708 0z" clip-rule="evenodd"/>
+                <path fill-rule="evenodd" d="M4.146 4.146a.5.5 0 000 .708l7 7a.5.5 0 00.708-.708l-7-7a.5.5 0 00-.708 0z" clip-rule="evenodd"/>
+              </svg>
+        </div>   
+        
+    </div>
+    <div class="modal-body">       
+            <div class="row">
+              <div class="col-sm-9 mx-auto">
+                <div class="p-2">
+                  <div class="text-center">
+                    <p> Add Educator</p>
+                    <img class="image-circle" height="100" width="100" src="../../../assets/user.png" alt=""> <br>
+
+                    <form  (ngSubmit)="addEducator(educatorFrom)"   #educatorFrom="ngForm"  class="form-signin">
+                      <div class="form-label-group py-1">
+                        <input style="font-size:12px !important;" type="email" name="email" ngModel class="form-control" placeholder="Email address" required autofocus>              
+                      </div> 
+                      <div class="form-label-group py-1">
+                        <input style="font-size:12px !important;" type="name" name="name" ngModel class="form-control" placeholder="Name" required autofocus>              
+                      </div> 
+                      <div class="form-label-group py-2">
+                        <input style="font-size:12px !important;" type="password" name="password" ngModel class="form-control" placeholder="Password" required>               
+                      </div>
+                      <div class="form-label-group py-2">
+                        <input style="font-size:12px !important;" type="number" name="number" ngModel class="form-control" placeholder="Contact number" required autofocus>              
+                      </div> 
+                      <div class="form-label-group py-2">
+                        <input style="font-size:12px !important;" type="Age" name="Age" ngModel class="form-control" placeholder="Age" required autofocus>              
+                      </div> 
+                      <div class=" text-center">
+                        <button style="font-size:12px !important;" class="btn btn-sm btn-success" type="submit">Add Educator</button>            
+                      </div>                      
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>       
+    </div>   
+  </ng-template>
