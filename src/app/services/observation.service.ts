@@ -101,4 +101,31 @@ export class ObservationService {
        })
     })
   }
+
+  getAllObservations(oid){
+    return this.db.collection("observations").doc(oid).collection("list",ref=>ref.orderBy("timestamp","desc")).snapshotChanges().pipe(
+      map(actions => actions.map(a => {
+        const data = a.payload.doc.data() as any;
+        const id = a.payload.doc.id;
+        return { id, ...data };
+      }))
+    );
+  }
+
+  addObservation(oid,message){
+    let temp={message:message,timestamp:firebase.firestore.Timestamp.now()}
+    return this.db.collection("observations").doc(oid).collection("list").add(temp)
+  }
+
+  updateObservation(oid,messageId,message){
+    let temp={message:message,timestamp:firebase.firestore.Timestamp.now()}
+    return this.db.collection("observations").doc(oid).collection("list").doc(messageId).set(temp)
+  }
+
+  delObservation(oid,messageId){
+    console.log("vnh")
+    return this.db.collection("observations").doc(oid).collection("list").doc(messageId).delete()
+  }
+
+  
 }

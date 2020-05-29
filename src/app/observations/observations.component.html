@@ -1,0 +1,38 @@
+<div class="container p-3 mb-5"> 
+    <div style="background-color:rgb(9, 64, 68);color:white !important;" class=" card d-flex flex-row bd-highlight borderless">
+    <div class="p-2 flex-grow-1 bd-highlight">      
+      <h5>Observations</h5>
+    </div>                
+  </div>  <hr>
+  
+<ng-container *ngIf="observations.length>0">
+  <div  *ngFor="let item of observations" class="card m-1 shadow">
+    <div class="card-body p-1" style="padding:0">
+        <div class="d-flex flex-row bd-highlight borderless">
+            <div  style="font-size: 15px !important;" class="p-2 flex-grow-1 bd-highlight">      
+                Student Name : <b>{{item.studentData.name}}</b>
+                <br>
+                Educator Name : <b routerLink="/parent/update-educator/{{item.eid}}">{{item.educatorData.name}}</b>
+            </div>
+            <div class="p-1 flex-grow-1 bd-highlight">  
+              <button style="background-color:rgb(9, 64, 68);color:white !important;" *ngIf="auth.getRole()=='student'" routerLink="/parent/manage-observations/{{item.id}}" type="button" class="btn btn-primary btn-sm btn-default mx-1 float-right">  
+                View Observations
+              </button>   
+              <button style="background-color:rgb(9, 64, 68);color:white !important;" *ngIf="auth.getRole()=='educator'" routerLink="/educator/manage-observations/{{item.id}}" type="button" class="btn btn-primary btn-sm btn-default mx-1 float-right">  
+                View Observations
+               </button>  
+               <button style="background-color:rgb(9, 64, 68);color:white !important;" *ngIf="auth.getRole()=='coordinator'" routerLink="/coordinator/manage-observations/{{item.id}}" type="button" class="btn btn-primary btn-sm btn-default mx-1 float-right">  
+                View Observations
+               </button>                                 
+             </div>                          
+          </div>       
+    </div>
+</div>
+</ng-container>
+
+<ng-container *ngIf="observations.length==0 && !loading">
+  <h5>No Observations Available</h5>
+</ng-container>
+
+
+</div>

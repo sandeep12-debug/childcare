@@ -61,7 +61,8 @@ export class ManageStudentComponent implements OnInit {
           console.log(observationData)
           let studentdata=observationData.studentData
           let id=observationData.sid
-          this.students.push({id,...studentdata})
+          let oid =observationData.id
+          this.students.push({id,oid,...studentdata})
           console.log(this.students)
         })
       })

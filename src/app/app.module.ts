@@ -25,6 +25,8 @@ import { UpdateStudentProfileComponent } from './update-student-profile/update-s
 import { UpdateEducatorProfileComponent } from './update-educator-profile/update-educator-profile.component';
 import { NgxUiLoaderModule } from 'ngx-ui-loader';
 import { MapEducatorComponent } from './map-educator/map-educator.component';
+import { ManageObservationsComponent } from './manage-observations/manage-observations.component';
+import { ObservationsComponent } from './observations/observations.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { MapEducatorComponent } from './map-educator/map-educator.component';
     ManageStudentComponent,
     UpdateStudentProfileComponent,
     UpdateEducatorProfileComponent,
-    MapEducatorComponent
+    MapEducatorComponent,
+    ManageObservationsComponent,
+    ObservationsComponent
   ],
   imports: [
     BrowserModule,

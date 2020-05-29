@@ -4,6 +4,7 @@ import { EducatorService } from '../services/educator.service';
 import { NgForm } from '@angular/forms';
 import { ObservationService } from '../services/observation.service';
 import { CommonService } from '../services/common.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-update-educator-profile',
@@ -14,7 +15,7 @@ export class UpdateEducatorProfileComponent implements OnInit {
   uid;
   profileInfo;
   assignedStudents=[]
-  constructor(public route:ActivatedRoute,public profileService:EducatorService,public observation:ObservationService,public common:CommonService) { }
+  constructor(public route:ActivatedRoute,public profileService:EducatorService,public observation:ObservationService,public common:CommonService,public auth:AuthService) { }
 
   ngOnInit(): void {
     this.uid=this.route.snapshot.params.uid;
