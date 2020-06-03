@@ -22,13 +22,12 @@
     <div class="card-body p-1" style="padding:0">
         <div class="d-flex flex-row bd-highlight borderless">
             <div  style="font-size: 15px !important;" class="p-1 flex-grow-1 bd-highlight">      
-              
                   <svg style="color:rgb(9, 64, 68)" class="bi bi-calendar-date-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4V.5zM0 5h16v9a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V5zm9.336 7.79c-1.11 0-1.656-.767-1.703-1.407h.683c.043.37.387.82 1.051.82.844 0 1.301-.848 1.305-2.164h-.027c-.153.414-.637.79-1.383.79-.852 0-1.676-.61-1.676-1.77 0-1.137.871-1.809 1.797-1.809 1.172 0 1.953.734 1.953 2.668 0 1.805-.742 2.871-2 2.871zm.066-2.544c.625 0 1.184-.484 1.184-1.18 0-.832-.527-1.23-1.16-1.23-.586 0-1.168.387-1.168 1.21 0 .817.543 1.2 1.144 1.2zm-2.957-2.89v5.332H5.77v-4.61h-.012c-.29.156-.883.52-1.258.777V8.16a12.6 12.6 0 0 1 1.313-.805h.632z"/>
                   </svg>  {{item.timestamp.toDate() | date}}   <br>
                   <svg style="color:rgb(9, 64, 68)" class="bi bi-chat-quote-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM7.194 6.766c.087.124.163.26.227.401.428.948.393 2.377-.942 3.706a.446.446 0 0 1-.612.01.405.405 0 0 1-.011-.59c.419-.416.672-.831.809-1.22-.269.165-.588.26-.93.26C4.775 9.333 4 8.587 4 7.667 4 6.747 4.776 6 5.734 6c.271 0 .528.06.756.166l.008.004c.169.07.327.182.469.324.085.083.161.174.227.272zM11 9.073c-.269.165-.588.26-.93.26-.958 0-1.735-.746-1.735-1.666 0-.92.777-1.667 1.734-1.667.271 0 .528.06.756.166l.008.004c.17.07.327.182.469.324.085.083.161.174.227.272.087.124.164.26.228.401.428.948.392 2.377-.942 3.706a.446.446 0 0 1-.613.01.405.405 0 0 1-.011-.59c.42-.416.672-.831.81-1.22z"/>
-                  </svg> {{item.message}}
+                  </svg> {{item.learning_experience}}
             </div>
             <div class="p-1 flex-grow-1 bd-highlight"> 
               <button style="background-color: red !important;color:white !important;" *ngIf="auth.getRole()!='student'" (click)="deleteObservationMessage(item.id)" type="button" class="btn btn-default btn-circle  mx-1 float-right">  
@@ -41,8 +40,19 @@
                   <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
                   <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
                 </svg> 
-              </button>         
-                      
+              </button>     
+              <button *ngIf="auth.getRole()=='student'" (click)="openeditmodal(edit,item)"  type="button" class="btn btn-default btn-circle  mx-1 float-right">  
+                <svg class="bi bi-pencil-square" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                  <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                </svg> 
+              </button>   
+              <button routerLink="/coordinator/observation-print/{{oid}}/{{item.id}}"  type="button" class="btn btn-default btn-circle  mx-1 float-right">  
+                <svg class="bi bi-eye-fill" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                  <path fill-rule="evenodd" d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+                </svg>       
+              </button>             
              </div>                          
           </div>       
     </div>
@@ -67,12 +77,36 @@
           <div class="row">
             <div class="col-sm-9 mx-auto">
               <div class="p-1">
-                <div class="text-center">
+                <div class="">
                   <p> Add Observation</p>                
                   <form  *ngIf="auth.getRole()!='student'" (ngSubmit)="addObservation(formObs)" #formObs="ngForm"  class="form-signin">
                     <div class="form-label-group py-1">
-                        <textarea style="font-size:12px !important;" type="text" name="message" ngModel class="form-control" placeholder="Message" required autofocus>              
-                       </textarea>
+                      <label>Choose Image</label>
+                      <input type="file" (change)="selectFile($event)">
+                    </div> 
+                    <div class="form-label-group py-1">
+                      <label>Date</label>
+                      <input type="date" class="form-control" name="date" ngModel>
+                    </div> 
+                      <div class="form-label-group py-1">
+                        <label>Learning Experience</label>
+                        <textarea style="font-size:12px !important;" type="text" name="learning_experience" ngModel class="form-control" placeholder="Purpose of Activity" required autofocus>              
+                        </textarea>
+                      </div> 
+                      <div class="form-label-group py-1">
+                        <label>Learning Story</label>
+                        <textarea style="font-size:12px !important;" type="text" name="learning_story" ngModel class="form-control" placeholder="What is the child doing and saying?" required autofocus>              
+                        </textarea>
+                      </div> 
+                      <div class="form-label-group py-1">
+                        <label>Analysis</label>
+                        <textarea style="font-size:12px !important;" type="text" name="analysis" ngModel class="form-control" placeholder="What is the child learning?" required autofocus>              
+                        </textarea>
+                      </div> 
+                      <div class="form-label-group py-1">
+                        <label>Evaluation/Future Planning</label>
+                        <textarea style="font-size:12px !important;" type="text" name="evaluation" ngModel class="form-control" placeholder="What are you going to do in the future to improve the child’s learning?" required autofocus>              
+                        </textarea>
                       </div> 
                     <div class="text-center">
                       <button style="font-size:12px !important;" class="btn btn-sm btn-success" type="submit">Submit</button>            
@@ -101,18 +135,94 @@
           <div class="row">
             <div class="col-sm-9 mx-auto">
               <div class="p-1">
-                <div class="text-center">
+                <div class="">
                   <p> Edit Observation</p>                
                   <form  *ngIf="selectedItem && auth.getRole()!='student'" (ngSubmit)="editObservation(formObsedit)" #formObsedit="ngForm"  class="form-signin">
                     <div class="form-label-group py-1">
-                        <input style="font-size:12px !important;" [(ngModel)]="selectedItem.message" type="text" name="message" class="form-control" placeholder="Message" required autofocus>              
-                      </div> 
+                      <label *ngIf="selectedItem.fileurl">Current Image</label>
+                      <br>
+                      <img *ngIf="selectedItem.fileurl" width="70px" height="70px" src="{{selectedItem.fileurl}}" alt="">
+                      <br>
+                      <label>Change Image</label>
+                      <input type="file" (change)="selectFile($event)">
+                    </div> 
+                    <div class="form-label-group py-1">
+                      <label>Date</label>
+                      <input type="date" class="form-control" name="date" [(ngModel)]="selectedItem.date">
+                    </div> 
+                    <div class="form-label-group py-1">
+                      <label>Learning Experience</label>
+                      <textarea style="font-size:12px !important;" type="text" name="learning_experience" [(ngModel)]="selectedItem.learning_experience" class="form-control" placeholder="Purpose of Activity" required autofocus>              
+                      </textarea>
+                    </div> 
+                    <div class="form-label-group py-1">
+                      <label>Learning Story</label>
+                      <textarea style="font-size:12px !important;" type="text" name="learning_story" [(ngModel)]="selectedItem.learning_story" class="form-control" placeholder="What is the child doing and saying?" required autofocus>              
+                      </textarea>
+                    </div> 
+                    <div class="form-label-group py-1">
+                      <label>Analysis</label>
+                      <textarea style="font-size:12px !important;" type="text" name="analysis" [(ngModel)]="selectedItem.analysis" class="form-control" placeholder="What is the child learning?" required autofocus>              
+                      </textarea>
+                    </div> 
+                    <div class="form-label-group py-1">
+                      <label>Evaluation/Future Planning</label>
+                      <textarea style="font-size:12px !important;" type="text" name="evaluation" [(ngModel)]="selectedItem.evaluation" class="form-control" placeholder="What are you going to do in the future to improve the child’s learning?" required autofocus>              
+                      </textarea>
+                    </div> 
+                    <div class="form-label-group py-1">
+                      <label>Paents Remark</label>
+                      <textarea disabled style="font-size:12px !important;" type="text" name="remark" [(ngModel)]="selectedItem.remark" class="form-control" placeholder="Parents Comment?" required autofocus>              
+                      </textarea>
+                    </div> 
                     <div class="text-center p-2">
                       <button style="font-size:12px !important;" class="btn btn-sm btn-success" type="submit">Submit</button> 
-                      <button style="font-size:12px !important;" class="ml-2 btn btn-sm btn-danger" (click)="cancelForm()">Cancel</button>                 
+                      <!-- <button style="font-size:12px !important;" class="ml-2 btn btn-sm btn-danger" (click)="cancelForm()">Cancel</button>                  -->
                     </div> 
                                   
-                  </form>          
+                  </form>   
+                  
+                  <form  *ngIf="selectedItem && auth.getRole()=='student'" (ngSubmit)="editObservation(formObsedit)" #formObsedit="ngForm"  class="form-signin">
+                    <div class="form-label-group py-1">
+                      <label *ngIf="selectedItem.fileurl">Image</label>
+                      <br>
+                      <img *ngIf="selectedItem.fileurl" width="100%" src="{{selectedItem.fileurl}}" alt="">
+                    </div> 
+                    <div class="form-label-group py-1">
+                      <label>Learning Experience</label>
+                      <textarea disabled style="font-size:12px !important;" type="text" name="learning_experience" [(ngModel)]="selectedItem.learning_experience" class="form-control" placeholder="Purpose of Activity" required autofocus>              
+                      </textarea>
+                    </div> 
+                    <div class="form-label-group py-1">
+                      <label>Date</label>
+                      <input disabled type="date" class="form-control" name="date" [(ngModel)]="selectedItem.date" required>
+                    </div> 
+                    <div class="form-label-group py-1">
+                      <label>Learning Story</label>
+                      <textarea disabled style="font-size:12px !important;" type="text" name="learning_story" [(ngModel)]="selectedItem.learning_story" class="form-control" placeholder="What is the child doing and saying?" required autofocus>              
+                      </textarea>
+                    </div> 
+                    <div class="form-label-group py-1">
+                      <label>Analysis</label>
+                      <textarea disabled style="font-size:12px !important;" type="text" name="analysis" [(ngModel)]="selectedItem.analysis" class="form-control" placeholder="What is the child learning?" required autofocus>              
+                      </textarea>
+                    </div> 
+                    <div class="form-label-group py-1">
+                      <label>Evaluation/Future Planning</label>
+                      <textarea disabled style="font-size:12px !important;" type="text" name="evaluation" [(ngModel)]="selectedItem.evaluation" class="form-control" placeholder="What are you going to do in the future to improve the child’s learning?" required autofocus>              
+                      </textarea>
+                    </div> 
+                    <div class="form-label-group py-1">
+                      <label>Paents Remark</label>
+                      <textarea style="font-size:12px !important;" type="text" name="remark" [(ngModel)]="selectedItem.remark" class="form-control" placeholder="Parents Comment?" required autofocus>              
+                      </textarea>
+                    </div> 
+                    <div class="text-center p-2">
+                      <button style="font-size:12px !important;" class="btn btn-sm btn-success" type="submit">Submit</button> 
+                      <!-- <button style="font-size:12px !important;" class="ml-2 btn btn-sm btn-danger" (click)="cancelForm()">Cancel</button>                  -->
+                    </div> 
+                                  
+                  </form>  
              
                 </div>
               </div>

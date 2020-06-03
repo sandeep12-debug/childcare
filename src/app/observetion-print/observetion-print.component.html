@@ -1,0 +1,92 @@
+<div id="content" #content>  
+
+      <div class="alert alert-info">  
+          <strong>Observation Doc</strong>  
+      </div> 
+
+  </div>  
+  <h5 class="p-3">Image</h5>
+  <img *ngIf="item.fileurl" width="100%" src="{{item.fileurl}}" alt="">
+  <div id="contentToConvert">
+    <div class="row mx-auto">
+        <div class="col border">
+            <h5>Name</h5>
+            <p>{{name}}</p>
+        </div>
+        <div class="col border">
+            <h5>Date</h5>
+            <p>{{item.date}}</p>
+        </div>
+    </div>
+        <div class="row mx-auto">
+            <div class="col border">
+                <h5>Learning Experience</h5>
+                <p>{{item.learning_experience}}</p>
+            </div>
+            <div class="col border">
+                <h5>Learning Story</h5>
+                <p>{{item.learning_story}}</p>
+            </div>
+        </div>
+        <div class="row mx-auto">
+            <div class="col border">
+                <h5>Learning Story</h5>
+                <p>{{item.analysis}}</p>
+            </div>
+            <div class="col border">
+                <h5>Learning Story</h5>
+                <p>{{item.evaluation}}</p>
+            </div>
+        </div>
+
+
+        <div class="container">
+            <br>
+            <h6>Linking to Learning Outcomes</h6>
+            <b>Outcome 1: Children have a strong sense of identity</b>
+            <ol>
+                <li>Children feel safe, secure, and supported.</li>
+                <li>Children develop their emerging autonomy, inter-dependence, resilience and sense of agency</li>
+                <li>Children develop knowledgeable and confident self-identities.</li>
+                <li>Children learn to interact in relation to others with care, empathy and respect.</li>
+            </ol>
+            <b>Outcome 2: Children are connected with and contribute to their world</b>
+            <ol>
+                <li>Children develop a sense of belonging to groups and communities and an understanding of the reciprocal rights and responsibilities necessary for active community participation.</li>
+                <li>Children respond to diversity with respect.</li>
+                <li>Children become aware of fairness.</li>
+                <li>Children become socially responsible and show respect for the environment.</li>
+            </ol>
+            <b>Outcome 3: Children have a strong sense of wellbeing</b>
+            <ol>
+                <li>Children become strong in their social and emotional wellbeing.</li>
+                <li>Children take increasing responsibility for their own health and physical wellbeing.</li>
+            </ol>
+            <b>Outcome 4: Children are confident and involved learners</b>
+            <ol>
+                <li>Children develop dispositions for learning such as curiosity, cooperation, confidence, creativity, commitment, enthusiasm, persistence, imagination and reflexivity</li>
+                <li>Children develop a range of skills and processes such as problem solving, inquiry, experimentation, hypothesising, researching and investigating.</li>
+                <li>Children transfer and adapt what they have learned from one context to another.</li>
+                <li>Children resource their own learning through connecting with people, place, technologies and natural and processed materials.</li>
+            </ol>
+            <b>Outcome 5: Children are effective communicators</b>
+            <ol>
+                <li>Children interact verbally and non-verbally with others for a range of purposes.</li>
+                <li>Children engage with a range of texts and gain meaning from these texts.</li>
+                <li>Children express ideas and make meaning using a range of media.</li>
+                <li>Children begin to understand how symbols and pattern systems work.</li>
+                <li>Children use information and communication technologies to access information, investigate ideas and represent their thinking.</li>
+            </ol>
+            <div class="border p-3">
+                <h5>Parent's Remark</h5>
+                <p>{{item.remark}}</p>
+            </div>
+        </div>
+
+  </div>  
+  <br><br>
+  <div class="text-center">  
+    <input class="btn btn-primary text-center" type="button" value="Download AS PDF" (click)="captureScreen()"/>  
+  </div> 
+  <br><br><br><br>
+ 

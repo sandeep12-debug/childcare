@@ -27,6 +27,7 @@ import { NgxUiLoaderModule } from 'ngx-ui-loader';
 import { MapEducatorComponent } from './map-educator/map-educator.component';
 import { ManageObservationsComponent } from './manage-observations/manage-observations.component';
 import { ObservationsComponent } from './observations/observations.component';
+import { ObservetionPrintComponent } from './observetion-print/observetion-print.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { ObservationsComponent } from './observations/observations.component';
     UpdateEducatorProfileComponent,
     MapEducatorComponent,
     ManageObservationsComponent,
-    ObservationsComponent
+    ObservationsComponent,
+    ObservetionPrintComponent
   ],
   imports: [
     BrowserModule,

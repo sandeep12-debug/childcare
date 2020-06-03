@@ -13,6 +13,7 @@ import { ForgetPasswordComponent } from './auth/forget-password/forget-password.
 import { MapEducatorComponent } from './map-educator/map-educator.component';
 import { ManageObservationsComponent } from './manage-observations/manage-observations.component';
 import { ObservationsComponent } from './observations/observations.component';
+import { ObservetionPrintComponent } from './observetion-print/observetion-print.component';
 
 
 const routes: Routes = [
@@ -28,6 +29,7 @@ const routes: Routes = [
     {path:'map-educator/:sid',component:MapEducatorComponent},
     {path:'manage-observations/:oid',component:ManageObservationsComponent},
     {path:'observations/:id/:type',component:ObservationsComponent},
+    {path:'observation-print/:oid/:mid',component:ObservetionPrintComponent},
   ]},
   {path:'educator',component:EducatorComponent,children:[
     {path:'update-student/:uid',component:UpdateStudentProfileComponent},

@@ -112,19 +112,27 @@ export class ObservationService {
     );
   }
 
-  addObservation(oid,message){
-    let temp={message:message,timestamp:firebase.firestore.Timestamp.now()}
+  getObservation(oid){
+    return this.db.collection("observations").doc(oid).valueChanges()
+  }
+
+  addObservation(oid,form){
+    let temp={timestamp:firebase.firestore.Timestamp.now(),...form}
     return this.db.collection("observations").doc(oid).collection("list").add(temp)
   }
 
-  updateObservation(oid,messageId,message){
-    let temp={message:message,timestamp:firebase.firestore.Timestamp.now()}
-    return this.db.collection("observations").doc(oid).collection("list").doc(messageId).set(temp)
+  updateObservation(oid,messageId,form){
+    let temp={timestamp:firebase.firestore.Timestamp.now(),...form}
+    return this.db.collection("observations").doc(oid).collection("list").doc(messageId).update(temp)
   }
 
   delObservation(oid,messageId){
     console.log("vnh")
     return this.db.collection("observations").doc(oid).collection("list").doc(messageId).delete()
+  }
+
+  getObservationMessage(oid,mid){
+    return this.db.collection("observations").doc(oid).collection("list").doc(mid).valueChanges()
   }
 
   
