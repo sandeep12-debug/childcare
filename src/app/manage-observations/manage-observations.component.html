@@ -47,12 +47,24 @@
                   <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
                 </svg> 
               </button>   
-              <button routerLink="/coordinator/observation-print/{{oid}}/{{item.id}}"  type="button" class="btn btn-default btn-circle  mx-1 float-right">  
+              <button *ngIf="auth.getRole()=='coordinator'"  routerLink="/coordinator/observation-print/{{oid}}/{{item.id}}"  type="button" class="btn btn-default btn-circle  mx-1 float-right">  
                 <svg class="bi bi-eye-fill" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                   <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
                   <path fill-rule="evenodd" d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
                 </svg>       
-              </button>             
+              </button> 
+              <button *ngIf="auth.getRole()=='educator'" routerLink="/educator/observation-print/{{oid}}/{{item.id}}"  type="button" class="btn btn-default btn-circle  mx-1 float-right">  
+                <svg class="bi bi-eye-fill" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                  <path fill-rule="evenodd" d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+                </svg>       
+              </button>   
+              <button *ngIf="auth.getRole()=='student'" routerLink="/parent/observation-print/{{oid}}/{{item.id}}"  type="button" class="btn btn-default btn-circle  mx-1 float-right">  
+                <svg class="bi bi-eye-fill" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                  <path fill-rule="evenodd" d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+                </svg>       
+              </button>               
              </div>                          
           </div>       
     </div>
@@ -82,34 +94,34 @@
                   <form  *ngIf="auth.getRole()!='student'" (ngSubmit)="addObservation(formObs)" #formObs="ngForm"  class="form-signin">
                     <div class="form-label-group py-1">
                       <label>Choose Image</label>
-                      <input type="file" (change)="selectFile($event)">
+                      <input type="file" (change)="selectFile($event)" required>
                     </div> 
                     <div class="form-label-group py-1">
                       <label>Date</label>
-                      <input type="date" class="form-control" name="date" ngModel>
+                      <input type="date" class="form-control" name="date" ngModel required>
                     </div> 
                       <div class="form-label-group py-1">
                         <label>Learning Experience</label>
-                        <textarea style="font-size:12px !important;" type="text" name="learning_experience" ngModel class="form-control" placeholder="Purpose of Activity" required autofocus>              
+                        <textarea required style="font-size:12px !important;" type="text" name="learning_experience" ngModel class="form-control" placeholder="Purpose of Activity" required autofocus>              
                         </textarea>
                       </div> 
                       <div class="form-label-group py-1">
                         <label>Learning Story</label>
-                        <textarea style="font-size:12px !important;" type="text" name="learning_story" ngModel class="form-control" placeholder="What is the child doing and saying?" required autofocus>              
+                        <textarea required style="font-size:12px !important;" type="text" name="learning_story" ngModel class="form-control" placeholder="What is the child doing and saying?" required autofocus>              
                         </textarea>
                       </div> 
                       <div class="form-label-group py-1">
                         <label>Analysis</label>
-                        <textarea style="font-size:12px !important;" type="text" name="analysis" ngModel class="form-control" placeholder="What is the child learning?" required autofocus>              
+                        <textarea required style="font-size:12px !important;" type="text" name="analysis" ngModel class="form-control" placeholder="What is the child learning?" required autofocus>              
                         </textarea>
                       </div> 
                       <div class="form-label-group py-1">
                         <label>Evaluation/Future Planning</label>
-                        <textarea style="font-size:12px !important;" type="text" name="evaluation" ngModel class="form-control" placeholder="What are you going to do in the future to improve the child’s learning?" required autofocus>              
+                        <textarea required style="font-size:12px !important;" type="text" name="evaluation" ngModel class="form-control" placeholder="What are you going to do in the future to improve the child’s learning?" required autofocus>              
                         </textarea>
                       </div> 
                     <div class="text-center">
-                      <button style="font-size:12px !important;" class="btn btn-sm btn-success" type="submit">Submit</button>            
+                      <button style="font-size:12px !important;" [disabled]="!formObs.valid" class="btn btn-sm btn-success" type="submit">Submit</button>            
                     </div>                      
                   </form>                
              

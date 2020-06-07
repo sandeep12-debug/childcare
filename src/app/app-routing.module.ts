@@ -35,13 +35,15 @@ const routes: Routes = [
     {path:'update-student/:uid',component:UpdateStudentProfileComponent},
     {path:'update-educator/:uid',component:UpdateEducatorProfileComponent},
     {path:'manage-student/:uid',component:ManageStudentComponent},
-    {path:'manage-observations/:oid',component:ManageObservationsComponent}
+    {path:'manage-observations/:oid',component:ManageObservationsComponent},
+    {path:'observation-print/:oid/:mid',component:ObservetionPrintComponent},
   ]},
   {path:'parent',component:ParentComponent,children:[
     {path:'update-student/:uid',component:UpdateStudentProfileComponent},
     {path:'observations/:id/:type',component:ObservationsComponent},
     {path:'manage-observations/:oid',component:ManageObservationsComponent},
-    {path:'update-educator/:uid',component:UpdateEducatorProfileComponent}
+    {path:'update-educator/:uid',component:UpdateEducatorProfileComponent},
+    {path:'observation-print/:oid/:mid',component:ObservetionPrintComponent},
   ]},
   {path:'**',redirectTo:'auth', pathMatch:"full"}
 
